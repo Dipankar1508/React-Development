@@ -18,7 +18,7 @@ router.post("/input", async (req, res) => {
         const { name, email, age, profession } = req.body;
         const newData = new Form({ name, email, age, profession });
         await newData.save();
-        res.status(201).json({ message: "Form created successfully", data: newData });
+        res.status(201).json({ message: "User created successfully", data: newData });
     } catch (err) {
         res.status(500).json({ message: err.message });
     }

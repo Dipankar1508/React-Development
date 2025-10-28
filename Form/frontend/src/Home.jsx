@@ -1,17 +1,39 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import Toastify from 'toastify-js';
+import 'toastify-js/src/toastify.css';
 
 const Home = () => {
     const [data, setdata] = useState([]);
+    const [msg, setmsg] = useState("");
 
     const url = `http://localhost:3000/form`;
     const navigate = useNavigate();
+
+    const toastmsg = async (data) => {
+        Toastify({
+            text: data,
+            duration: 3000,
+            newWindow: true,
+            close: true,
+            gravity: "bottom", 
+            position: "left",
+            stopOnFocus: true, 
+            style: {
+                background: "linear-gradient(to right, #00b09b, #96c93d)",
+            },
+            onClick: function () { } // Callback after click
+        }).showToast();
+    }
 
     const fetchData = async () => {
         try {
             const response = await axios.get(`${url}/data`);
             setdata(response.data.data);
+            console.log(response.data.message);
+            setmsg(response.data.message);
+            toastmsg(response.data.message);
         }
         catch (error) {
             console.log(error);
@@ -75,7 +97,7 @@ const Home = () => {
 
                                     <button
                                         onClick={() => handleDelete(person._id)}
-                                        className="bg-pink-500 hover:bg-red-600 text-white px-4 py-1.5 rounded-md transition"
+                                        className="bg-cyan-500 hover:bg-red-600 text-white px-4 py-1.5 rounded-md transition"
                                     >
                                         Delete
                                     </button>

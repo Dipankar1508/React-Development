@@ -10,10 +10,10 @@ const Form = () => {
         profession: "",
     });
 
-    const [message, setMessage] = useState("");
     const navigate = useNavigate();
 
     const url = `http://localhost:3000/form`;
+
 
     const handleChange = (e) => {
         setFormData({

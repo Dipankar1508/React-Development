@@ -211,7 +211,11 @@ const PatientDashboard = () => {
 
                             {/* Created Info */}
                             <Typography variant="body2" sx={{ opacity: 0.7 }}>
-                                Profile Created: {new Date(patient.createdAt).toLocaleDateString()}
+                                Profile Created: {new Date(patient.createdAt).toLocaleDateString("en-GB", {
+                                    day: "2-digit",
+                                    month: "short",
+                                    year: "numeric",
+                                })}
                             </Typography>
                         </Box>
                     ) : (

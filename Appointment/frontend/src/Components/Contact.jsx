@@ -30,10 +30,10 @@ const Contact = () => {
                             <FaPhone /> <span>+91 98765 43210</span>
                         </div>
                         <div className="flex items-center gap-3">
-                            <FaEnvelope /> <span>support@medicarepro.com</span>
+                            <FaEnvelope /> <span>support@mediconnectpro.com</span>
                         </div>
 
-                        <div className="flex items-center gap-5 mt-6 text-2xl">
+                        <div className="flex items-center gap-8 mt-6 text-3xl">
                             <a href="#" className="hover:text-blue-300"><FaFacebook /></a>
                             <a href="#" className="hover:text-pink-300"><FaInstagram /></a>
                             <a href="#" className="hover:text-sky-300"><FaTelegram /></a>

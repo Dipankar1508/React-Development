@@ -159,6 +159,7 @@ const DoctorEditForm = () => {
                 headers: { Authorization: `Bearer ${token}` },
             });
             setMessage("Profile updated successfully!");
+            setTimeout(() => { navigate("/doctor/dashboard") }, 1500);
         } catch (err) {
             console.error(err);
             setMessage(
@@ -214,7 +215,6 @@ const DoctorEditForm = () => {
                             value={formData.name}
                             onChange={handleChange}
                             fullWidth
-                            InputProps={{ disableUnderline: true }}
                             sx={{
                                 bgcolor: "rgba(0,0,0,0.45)",
                                 borderRadius: 2,
@@ -233,13 +233,14 @@ const DoctorEditForm = () => {
                             value={formData.specialization}
                             onChange={handleChange}
                             fullWidth
-                            InputProps={{ disableUnderline: true }}
                             sx={{
                                 bgcolor: "rgba(0,0,0,0.45)",
                                 borderRadius: 2,
-                                input: { color: "white" },
+                                "& .MuiInputBase-input": { color: "white" }, // ✅ makes selected text white
+                                "& .MuiSelect-select": { color: "white" }, // ✅ specifically targets select text
                                 "& .MuiInputLabel-root": { color: "rgba(173, 216, 230, 0.9)" },
                                 "& .MuiInputLabel-root.Mui-focused": { color: "#00d4ff" },
+                                "& .MuiSvgIcon-root": { color: "white" }, // optional: makes the dropdown arrow white
                             }}
                         >
                             <MenuItem value="">Select Specialization</MenuItem>
@@ -259,7 +260,6 @@ const DoctorEditForm = () => {
                             value={formData.experienceYears}
                             onChange={handleChange}
                             fullWidth
-                            InputProps={{ disableUnderline: true }}
                             sx={{
                                 bgcolor: "rgba(0,0,0,0.45)",
                                 borderRadius: 2,
@@ -278,7 +278,6 @@ const DoctorEditForm = () => {
                             value={formData.consultationFee}
                             onChange={handleChange}
                             fullWidth
-                            InputProps={{ disableUnderline: true }}
                             sx={{
                                 bgcolor: "rgba(0,0,0,0.45)",
                                 borderRadius: 2,
@@ -343,7 +342,7 @@ const DoctorEditForm = () => {
                                                 handleSlotChange(index, "startTime", e.target.value)
                                             }
                                             InputLabelProps={{ shrink: true }}
-                                            InputProps={{ disableUnderline: true }}
+
                                             sx={{
                                                 bgcolor: "rgba(0,0,0,0.45)",
                                                 borderRadius: 2,
@@ -359,7 +358,7 @@ const DoctorEditForm = () => {
                                                 handleSlotChange(index, "endTime", e.target.value)
                                             }
                                             InputLabelProps={{ shrink: true }}
-                                            InputProps={{ disableUnderline: true }}
+
                                             sx={{
                                                 bgcolor: "rgba(0,0,0,0.45)",
                                                 borderRadius: 2,

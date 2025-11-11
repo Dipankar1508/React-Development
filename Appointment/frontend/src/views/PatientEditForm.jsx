@@ -13,6 +13,7 @@ import {
   Divider,
 } from "@mui/material";
 import { useParams, useNavigate } from "react-router-dom";
+import { toast } from "../Components/Toast"
 
 const bloodGroups = ["A+", "A−", "B+", "B−", "AB+", "AB−", "O+", "O−"];
 const genders = ["Male", "Female", "Other"];
@@ -87,8 +88,9 @@ const PatientEditForm = () => {
       const response = await axios.put(`${url}/${id}`, formData, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      setMessage(response.data.message || "Patient updated successfully!");
-      setTimeout(() => navigate("/patient/dashboard"), 1500);
+      // setMessage(response.data.message || "Patient updated successfully!");
+      toast("Patient updated successfully!");
+      setTimeout(() => navigate("/patient/dashboard"), 500);
     } catch (error) {
       console.error(error);
       setMessage(

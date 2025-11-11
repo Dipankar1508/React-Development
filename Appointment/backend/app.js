@@ -8,6 +8,8 @@ const Appointment = require("./routes/AppointmentRoute.js")
 const Doctor = require("./routes/DoctorRoute.js")
 const Patient = require("./routes/PatientRoute.js")
 const Auth = require("./routes/AuthRoute.js")
+const Admin = require("./routes/AdminRoute.js")
+
 
 const app = express();
 
@@ -18,6 +20,8 @@ app.use("/api/appointment", Appointment);
 app.use("/api/doctor", Doctor);
 app.use("/api/patient", Patient);
 app.use("/api/auth", Auth);
+app.use("/api/admin", Admin);
+
 
 mongoose
     .connect("mongodb://localhost:27017/Appointment")

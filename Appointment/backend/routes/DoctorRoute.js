@@ -142,5 +142,45 @@ router.put("/data/edit/:id", auth, async (req, res) => {
     }
 });
 
+// GET doctors by specialization
+// 🩻 GET doctors by specialization
+router.get("/by-specialization", async (req, res) => {
+    try {
+        const { spec } = req.query;
+
+        if (!spec) {
+            return res.status(400).json({ message: "Specialization query is required" });
+        }
+
+        const doctors = await Doctor.find({ specialization: spec }).select(
+            "name specialization availableDays"
+        );
+
+        if (!doctors.length) {
+            return res.status(404).json({ message: `No doctors found for ${spec}` });
+        }
+
+        res.status(200).json({
+            message: "Doctors fetched successfully",
+            data: doctors,
+        });
+    } catch (err) {
+        console.error("Error fetching doctors by specialization:", err);
+        res.status(500).json({ message: "Error fetching doctors by specialization" });
+    }
+});
+
+// ✅ Get unique list of specializations
+router.get("/specializations/list", async (req, res) => {
+    try {
+        const specializations = await Doctor.distinct("specialization");
+        res.status(200).json({ message: "Specializations fetched", data: specializations });
+    } catch (err) {
+        console.error("Error fetching specializations:", err);
+        res.status(500).json({ message: "Error fetching specializations" });
+    }
+});
+
+
 
 module.exports = router;

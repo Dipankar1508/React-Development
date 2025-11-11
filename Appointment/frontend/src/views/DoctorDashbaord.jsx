@@ -26,6 +26,7 @@ const DoctorDashboard = () => {
                     headers: { Authorization: `Bearer ${token}` },
                 });
                 setDoctor(res.data.data);
+                localStorage.setItem("doctorId", res.data.data._id)
             } catch (err) {
                 console.log("No existing doctor profile");
             } finally {
@@ -47,6 +48,10 @@ const DoctorDashboard = () => {
 
     const handleEdit = (id) => {
         navigate(`/doctor/edit/${id}`)
+    }
+
+    const handleAppointment = (id) => {
+        navigate(`/doctor/appointment/${id}`)
     }
 
 
@@ -97,6 +102,7 @@ const DoctorDashboard = () => {
                                     fontWeight: 600,
                                     "&:hover": { bgcolor: "#388e3c" },
                                 }}
+                                onClick={() => handleAppointment(doctor._id)}
                             >
                                 View Appointments
                             </Button>

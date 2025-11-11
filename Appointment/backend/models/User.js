@@ -31,7 +31,7 @@ userSchema.methods.comparePassword = async function (enteredPassword) {
 
 // ✅ Validate Doctor PIN (admin-controlled)
 userSchema.statics.validateDoctorPin = async function (enteredPin) {
-    const AdminDoctorPIN = process.env.DOCTOR_PIN || "12345"; // use .env
+    const AdminDoctorPIN = process.env.DOCTOR_PIN; // use .env
     return enteredPin === AdminDoctorPIN;
 };
 

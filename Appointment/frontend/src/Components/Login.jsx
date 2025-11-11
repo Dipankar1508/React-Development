@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { toast } from "./Toast"
 
 const Login = () => {
     const url = `http://localhost:7000/api/auth`;
@@ -36,6 +37,7 @@ const Login = () => {
         try {
             const { data } = await axios.post(`${url}/login`, formData);
             console.log("Response:", data);
+            toast(data.message);
 
             // ✅ Save token & user
             localStorage.setItem("token", data.token);
@@ -48,7 +50,12 @@ const Login = () => {
                 navigate("/patient/dashboard");
             }
         } catch (err) {
-            console.error("Login error:", err.response?.data || err.message);
+            toast(
+                err.response?.data?.message ||
+                "Login failed. Please try again."
+            );
+            console.error("Register error:", err.response?.data || err.message);
+
         } finally {
             setLoading(false);
         }

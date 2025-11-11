@@ -41,12 +41,17 @@ const PatientDashboard = () => {
         navigate(`/patient/edit/${id}`);
     };
 
-    if (loading)
+    if (loading) {
         return (
             <div className="min-h-screen flex items-center justify-center text-white bg-[#0b1b30]">
                 <h2>Loading...</h2>
             </div>
         );
+    }
+
+    const handleHistory = (id) => {
+        navigate(`/patient/appointment/${id}`);
+    }
 
     return (
         <div className="flex flex-col md:flex-row min-h-screen bg-gradient-to-br from-[#071021] via-[#0e2340] to-[#081224] text-white gap-8 p-6 md:p-12">
@@ -86,7 +91,7 @@ const PatientDashboard = () => {
                                     fontWeight: 600,
                                     "&:hover": { bgcolor: "#388e3c" },
                                 }}
-                                onClick={() => navigate("/appointments")}
+                                onClick={() => navigate("/patient/book-appointment")}
                             >
                                 Book Appointments
                             </Button>
@@ -98,7 +103,7 @@ const PatientDashboard = () => {
                                     fontWeight: 600,
                                     "&:hover": { bgcolor: "#388e3c" },
                                 }}
-                                onClick={() => navigate("/appointments")}
+                                onClick={() => handleHistory(patient._id)}
                             >
                                 History
                             </Button>

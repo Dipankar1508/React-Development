@@ -14,6 +14,7 @@ import {
     Paper,
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { toast } from "../Components/Toast"
 
 const specializations = [
     "Cardiology",
@@ -158,8 +159,9 @@ const DoctorEditForm = () => {
             await axios.put(`${url}/data/edit/${id}`, updatedForm, {
                 headers: { Authorization: `Bearer ${token}` },
             });
-            setMessage("Profile updated successfully!");
-            setTimeout(() => { navigate("/doctor/dashboard") }, 1500);
+
+            toast("Doctor profile updated successfully.");
+            setTimeout(() => { navigate("/doctor/dashboard") }, 500);
         } catch (err) {
             console.error(err);
             setMessage(

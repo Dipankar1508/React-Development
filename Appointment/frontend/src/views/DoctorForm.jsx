@@ -15,6 +15,8 @@ import {
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 
+import { toast } from "../Components/Toast";
+
 const specializations = [
     "Cardiology",
     "Dermatology",
@@ -111,7 +113,8 @@ const DoctorForm = () => {
             await axios.post(`${url}/data`, formData, {
                 headers: { Authorization: `Bearer ${token}` },
             });
-            setMessage("Profile created successfully!");
+            // setMessage("Profile created successfully!");
+            toast("Profile created successfully!");
             setFormData({
                 name: "",
                 specialization: "",
@@ -120,6 +123,7 @@ const DoctorForm = () => {
                 availableDays: [],
                 availableSlots: [],
             });
+            setTimeout(() => { navigate("/doctor/dashboard") }, 500);
         } catch (err) {
             console.error(err);
             setMessage(

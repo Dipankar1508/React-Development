@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { toast } from "./Toast";
 
 const Register = () => {
     const url = `http://localhost:7000/api/auth`
@@ -53,6 +54,7 @@ const Register = () => {
         try {
             const { data } = await axios.post(`${url}/register`, formData);
             console.log("Response:", { data });
+            toast(data.message);
 
             localStorage.setItem("token", data.token);
             localStorage.setItem("user", JSON.stringify(data.user));
@@ -64,6 +66,10 @@ const Register = () => {
             }
 
         } catch (err) {
+            toast(
+                err.response?.data?.message ||
+                "Login failed. Please try again."
+            );
             console.error("Register error:", err.response?.data || err.message);
         } finally {
             setLoading(false);

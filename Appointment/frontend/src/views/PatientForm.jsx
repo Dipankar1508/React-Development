@@ -13,6 +13,7 @@ import {
     Divider,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { toast } from "../Components/Toast"
 
 const bloodGroups = ["A+", "A−", "B+", "B−", "AB+", "AB−", "O+", "O−"];
 const genders = ["Male", "Female", "Other"];
@@ -62,7 +63,8 @@ const PatientForm = () => {
             const response = await axios.post(url, formData, {
                 headers: { Authorization: `Bearer ${token}` },
             });
-            setMessage(response.data.message || "Patient profile created successfully!");
+            // setMessage(response.data.message || "Patient profile created successfully!");
+            toast("Patient profile created successfully!");
             setFormData({
                 name: "",
                 age: "",
@@ -73,6 +75,10 @@ const PatientForm = () => {
                 hasChronicDiseases: false,
                 chronicDiseases: "",
             });
+            setTimeout(() => {
+                navigate("/patient/dashboard");
+            }, 500);
+
         } catch (error) {
             console.error(error);
             setMessage(error.response?.data?.message || "Failed to create patient profile.");

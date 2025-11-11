@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
-import { FaPhone, FaEnvelope, FaFacebook, FaInstagram, FaTelegram } from "react-icons/fa";
+import { FaPhone, FaEnvelope, FaFacebook, FaInstagram, FaTelegram, FaUserShield } from "react-icons/fa";
+import { Link } from "react-router-dom";
+
 
 const Contact = () => {
     useEffect(() => {
@@ -35,6 +37,10 @@ const Contact = () => {
 
                         <div className="flex items-center gap-8 mt-6 text-3xl">
                             <a href="#" className="hover:text-blue-300"><FaFacebook /></a>
+                            <Link to="/admin/login" className="hover:text-yellow-300" title="Admin Login">
+                                <FaUserShield />
+                            </Link>
+
                             <a href="#" className="hover:text-pink-300"><FaInstagram /></a>
                             <a href="#" className="hover:text-sky-300"><FaTelegram /></a>
                         </div>

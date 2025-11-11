@@ -80,8 +80,6 @@ router.get("/data/me", auth, async (req, res) => {
     }
 });
 
-
-
 router.get("/data/edit/:id", async (req, res) => {
     try {
         const { id } = req.params;

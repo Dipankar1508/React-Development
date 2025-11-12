@@ -128,31 +128,33 @@ Admins have full control over system operations, including viewing feedback, man
 
 ### 🏨 Login Page
 
-![Login Page](./frontend/public/screenshots/login-page.png)
+<img width="1897" height="861" alt="image" src="https://github.com/user-attachments/assets/2cf0cb9c-cf3b-448a-b308-a444513daa4e" />
 
 ### 🏨 Register Page
 
-![Register Page](./frontend/public/screenshots/register-page.png)
-
-### 🖥️ Admin Dashboard
-
-![Admin Dashboard](./frontend/public/screenshots/admin-dashboard.png)
+<img width="1899" height="860" alt="image" src="https://github.com/user-attachments/assets/3171a59b-a27c-4057-a9fb-87b0cc00db62" />
 
 ### 📱 Contact & Feedback Page
 
-![Contact Feedback](./frontend/public/screenshots/contact-feedback.png)
+<img width="1895" height="864" alt="image" src="https://github.com/user-attachments/assets/11e9f4a9-a2e1-4151-bcdc-8da7a837c1c8" />
+<img width="1897" height="672" alt="image" src="https://github.com/user-attachments/assets/50e7b4c8-f08d-4181-8570-8a9b3079be5f" />
+
+### 🖥️ Admin Dashboard
+
+<img width="1896" height="863" alt="image" src="https://github.com/user-attachments/assets/cc49540b-d2db-4d08-89ef-3ac8593bb103" />
 
 ### 👨‍⚕️ Doctor Dashboard
 
-![Doctor Dashboard](./frontend/public/screenshots/doctor-dashboard.png)
+<img width="1892" height="859" alt="image" src="https://github.com/user-attachments/assets/de628a56-9f7a-4171-b8ed-6ddaaa6e8dcb" />
 
 ### 🧍 Patient Dashboard
 
-![Patient Dashboard](./frontend/public/screenshots/patient-dashboard.png)
+<img width="1892" height="862" alt="image" src="https://github.com/user-attachments/assets/77df5b12-25e1-4097-85b4-fa8a720350ac" />
 
-> 📌 _You can replace these image paths with your actual screenshot locations or placeholders._
-> For best results, store screenshots in:  
-> `frontend/public/screenshots/` folder.
+### Appointment Form
+
+<img width="1900" height="863" alt="image" src="https://github.com/user-attachments/assets/63f4ebf4-bae7-400b-baaa-c1495d5f588e" />
+
 
 ---
 

@@ -18,7 +18,7 @@ const StatCard = ({ label, value }) => (
     textAlign: "center",
     p: 2,
     transition: ".3s",
-    "&:hover": { transform: "translateY(-6px)", boxShadow: "0 0 16px rgba(0,200,255,0.4)" }
+    "&:hover": { boxShadow: "0 0 16px rgba(0,200,255,0.4)" }
   }}>
     <Typography sx={{ opacity: 0.7, fontSize: 14 }}>{label}</Typography>
     <Typography variant="h4" sx={{ fontWeight: 700 }}>{value}</Typography>
@@ -51,7 +51,7 @@ const AdminDashboard = () => {
   const chartData = {
     options: {
       chart: {
-        id: "stats-chart",
+        id: "Service-Stats",
         foreColor: "#ffffff",
         toolbar: {
           show: true,
@@ -117,18 +117,29 @@ const AdminDashboard = () => {
               onClick={() => navigate(path)}
               sx={{
                 borderRadius: 3,
-                px: 3,
-                py: 1.2,
-                fontWeight: 400,
-                letterSpacing: 0.5,
-                fontSize: "0.9rem",
-                background: "linear-gradient(135deg, #0284ff, #00e1ff)",
-                boxShadow: "0 0 12px rgba(0,200,255,0.35)",
-                "&:hover": { background: "linear-gradient(135deg, #0070dd, #00c8e0)" }
+                px: 3.5,
+                py: 1.3,
+                fontWeight: 600,
+                letterSpacing: 0.7,
+                fontSize: "0.95rem",
+                textTransform: "none",
+                background: "linear-gradient(135deg, #FF9966 0%, #FF5E62 100%)",
+                boxShadow: "0 4px 15px rgba(255, 94, 98, 0.4)",
+                transition: "all 0.3s ease",
+                "&:hover": {
+                  // transform: "translateY(-4px)",
+                  background: "linear-gradient(135deg, #FF7B5E 0%, #FF3D68 100%)",
+                  boxShadow: "0 8px 25px rgba(255, 94, 98, 0.6)",
+                },
+                "&:active": {
+                  transform: "translateY(0px) scale(0.97)",
+                  boxShadow: "0 3px 8px rgba(255, 94, 98, 0.35)",
+                },
               }}
             >
               {text}
             </Button>
+
           ))}
         </Box>
 

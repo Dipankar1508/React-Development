@@ -59,12 +59,6 @@ function App() {
           <Route path="/patient/appointment/:id" element={<PatientAppointments />} />
 
           {/* Admin */}
-          {/* <Route path='/admin/login' element={<AdminLogin />} />
-          <Route path='/admin/dashboard' element={<AdminDashboard />} />
-          <Route path='/admin/manageusers' element={<ManageUsers />} />
-          <Route path='/admin/managedoctors' element={<ManageDoctors />} />
-          <Route path='/admin/managepatients' element={<ManagePatients />} />
-          <Route path='/admin/manageappointments' element={<ManageAppointments />} /> */}
 
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin/dashboard" element={<AdminGuard><AdminDashboard /></AdminGuard>} />

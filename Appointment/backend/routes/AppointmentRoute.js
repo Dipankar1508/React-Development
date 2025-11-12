@@ -80,7 +80,7 @@ router.post("/book/:id", auth, async (req, res) => {
         });
 
         await newAppointment.save();
-        res.status(201).json({ message: "Appointment booked successfully ✅", data: newAppointment });
+        res.status(201).json({ message: "Appointment booked successfully ", data: newAppointment });
 
     } catch (error) {
         console.error(error);

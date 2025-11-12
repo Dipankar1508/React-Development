@@ -59,11 +59,15 @@ const Register = () => {
             localStorage.setItem("token", data.token);
             localStorage.setItem("user", JSON.stringify(data.user));
 
-            if (data.user.role === "doctor") {
-                navigate("/doctorform");
-            } else {
-                navigate("/patientform");
-            }
+            // if (data.user.role === "doctor") {
+            //     navigate("/doctorform");
+            // } else {
+            //     navigate("/patientform");
+            // }
+            setTimeout(() => {
+                navigate("/login");
+            }, 2000);
+
 
         } catch (err) {
             toast(

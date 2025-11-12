@@ -15,7 +15,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { toast } from "../Components/Toast"
 
-const bloodGroups = ["A+", "A−", "B+", "B−", "AB+", "AB−", "O+", "O−"];
+const bloodGroups = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"];
 const genders = ["Male", "Female", "Other"];
 
 const PatientForm = () => {

@@ -123,7 +123,7 @@ Admins have full control over system operations, including viewing feedback, man
 
 ### 🏠 Home Page
 
-![Home Page](./frontend/public/screenshots/home-page.png)
+![Home Page](<img width="1892" height="860" alt="image" src="https://github.com/user-attachments/assets/8d404630-05be-4656-826a-e7ab080958e6" />)
 
 ### 🏨 Login Page
 

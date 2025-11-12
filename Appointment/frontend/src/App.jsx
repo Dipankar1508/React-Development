@@ -28,6 +28,7 @@ import ManageUsers from './admin/ManageUsers'
 import ManageDoctors from './admin/ManageDoctors'
 import ManagePatients from './admin/ManagePatients'
 import ManageAppointments from './admin/ManageAppointments'
+import ManageFeedbacks from './admin/ManageFeedbacks'
 import AdminGuard from './admin/AdminGuard'
 
 function App() {
@@ -71,6 +72,8 @@ function App() {
           <Route path="/admin/managedoctors" element={<AdminGuard><ManageDoctors /></AdminGuard>} />
           <Route path="/admin/managepatients" element={<AdminGuard><ManagePatients /></AdminGuard>} />
           <Route path="/admin/manageappointments" element={<AdminGuard><ManageAppointments /></AdminGuard>} />
+          <Route path="/admin/managefeedbacks" element={<ManageFeedbacks />} />
+
 
           <Route path='*' element={<NotFound />} />
 

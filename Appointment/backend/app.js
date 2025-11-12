@@ -9,6 +9,7 @@ const Doctor = require("./routes/DoctorRoute.js")
 const Patient = require("./routes/PatientRoute.js")
 const Auth = require("./routes/AuthRoute.js")
 const Admin = require("./routes/AdminRoute.js")
+const Feedback = require("./routes/FeedbackRoute.js")
 
 
 const app = express();
@@ -21,6 +22,7 @@ app.use("/api/doctor", Doctor);
 app.use("/api/patient", Patient);
 app.use("/api/auth", Auth);
 app.use("/api/admin", Admin);
+app.use("/api/feedback", Feedback);
 
 
 mongoose

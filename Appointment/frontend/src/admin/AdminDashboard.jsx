@@ -26,7 +26,7 @@ const StatCard = ({ label, value }) => (
 );
 
 const AdminDashboard = () => {
-  const [stats, setStats] = useState({ users: 0, doctors: 0, patients: 0, appointments: 0 });
+  const [stats, setStats] = useState({ users: 0, doctors: 0, patients: 0, appointments: 0, feedbacks: 0 });
   const [msg, setMsg] = useState("");
   const navigate = useNavigate();
 
@@ -38,7 +38,8 @@ const AdminDashboard = () => {
           users: res.data.users?.length || 0,
           doctors: res.data.doctors?.length || 0,
           patients: res.data.patients?.length || 0,
-          appointments: res.data.appointments?.length || 0
+          appointments: res.data.appointments?.length || 0,
+          feedbacks: res.data.feedbacks?.length || 0
         });
       } catch (e) {
         setMsg(e.response?.data?.message || "Failed to load dashboard");
@@ -95,6 +96,8 @@ const AdminDashboard = () => {
           <Grid item xs={12} md={3}><StatCard label="Doctors" value={stats.doctors} /></Grid>
           <Grid item xs={12} md={3}><StatCard label="Patients" value={stats.patients} /></Grid>
           <Grid item xs={12} md={3}><StatCard label="Appointments" value={stats.appointments} /></Grid>
+          <Grid item xs={12} md={3}><StatCard label="Feedbacks" value={stats.feedbacks} /></Grid>
+
         </Grid>
 
         <Divider sx={{ borderColor: "rgba(255,255,255,0.1)", my: 3 }} />
@@ -105,7 +108,8 @@ const AdminDashboard = () => {
             ["Manage Users", "/admin/manageusers"],
             ["Manage Doctors", "/admin/managedoctors"],
             ["Manage Patients", "/admin/managepatients"],
-            ["Manage Appointments", "/admin/manageappointments"]
+            ["Manage Appointments", "/admin/manageappointments"],
+            ["Manage Feedbacks", "/admin/managefeedbacks"],
           ].map(([text, path]) => (
             <Button
               key={text}

@@ -6,6 +6,7 @@ const User = require("../models/User");
 const Doctor = require("../models/Doctor");
 const Patient = require("../models/Patient");
 const Appointment = require("../models/Appointment");
+const Feedback = require("../models/Feedback");
 const adminAuth = require("../middleware/admin");
 
 // ======================
@@ -37,8 +38,10 @@ router.get("/dashboard", adminAuth, async (req, res) => {
         const appointments = await Appointment.find()
             .populate("doctorId", "name")
             .populate("patientId", "name");
+        const feedbacks = await Feedback.find().sort({ createdAt: -1 });
 
-        res.json({ users, doctors, patients, appointments });
+
+        res.json({ users, doctors, patients, appointments, feedbacks });
     } catch (err) {
         console.error("Dashboard Load Error:", err);
         res.status(500).json({ message: "Server Error" });
@@ -127,5 +130,33 @@ router.delete("/appointments/:id", adminAuth, async (req, res) => {
     await Appointment.findByIdAndDelete(req.params.id);
     res.json({ message: "Appointment deleted ✅" });
 });
+
+
+// ======================
+//  MANAGE FEEDBACK
+// ======================
+router.get("/feedback", adminAuth, async (req, res) => {
+    try {
+        const feedback = await Feedback.find().sort({ createdAt: -1 });
+        res.status(200).json(feedback);
+    } catch (error) {
+        console.error("Fetch Feedback Error:", error);
+        res.status(500).json({ message: "Error fetching feedback" });
+    }
+});
+
+// DELETE feedback
+router.delete("/feedback/:id", adminAuth, async (req, res) => {
+    try {
+        const fb = await Feedback.findByIdAndDelete(req.params.id);
+        if (!fb) return res.status(404).json({ message: "Feedback not found" });
+
+        res.status(200).json({ message: "Feedback deleted ✅" });
+    } catch (error) {
+        console.error("Delete Feedback Error:", error);
+        res.status(500).json({ message: "Error deleting feedback" });
+    }
+});
+
 
 module.exports = router;

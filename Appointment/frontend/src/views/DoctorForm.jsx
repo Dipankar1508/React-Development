@@ -114,7 +114,7 @@ const DoctorForm = () => {
                 headers: { Authorization: `Bearer ${token}` },
             });
             // setMessage("Profile created successfully!");
-            toast("Profile created successfully!");
+            toast("Profile created successfully");
             setFormData({
                 name: "",
                 specialization: "",

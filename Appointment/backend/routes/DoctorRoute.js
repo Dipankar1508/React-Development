@@ -153,7 +153,7 @@ router.get("/by-specialization", async (req, res) => {
         }
 
         const doctors = await Doctor.find({ specialization: spec }).select(
-            "name specialization availableDays"
+            "name specialization availableDays consultationFee"
         );
 
         if (!doctors.length) {

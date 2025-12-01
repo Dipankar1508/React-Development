@@ -58,7 +58,7 @@ const ManageAppointments = () => {
               <TableRow>
                 <TableCell sx={{ color: "#b3cde0" }}>Doctor</TableCell>
                 <TableCell sx={{ color: "#b3cde0" }}>Patient</TableCell>
-                <TableCell sx={{ color: "#b3cde0" }}>Date</TableCell>
+                <TableCell sx={{ color: "#b3cde0" }}>Appointment Date</TableCell>
                 <TableCell sx={{ color: "#b3cde0" }}>Status</TableCell>
                 <TableCell align="right" sx={{ color: "#b3cde0" }}>Actions</TableCell>
               </TableRow>

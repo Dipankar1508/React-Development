@@ -15,6 +15,22 @@ import {
 import { useNavigate } from "react-router-dom";
 import { toast } from "../Components/Toast"
 
+const loadRazorpayScript = () => {
+    return new Promise((resolve) => {
+        // if already loaded, don't load again
+        if (document.querySelector('script[src="https://checkout.razorpay.com/v1/checkout.js"]')) {
+            return resolve(true);
+        }
+
+        const script = document.createElement("script");
+        script.src = "https://checkout.razorpay.com/v1/checkout.js";
+        script.onload = () => resolve(true);
+        script.onerror = () => resolve(false);
+        document.body.appendChild(script);
+    });
+};
+
+
 const PatientBookAppointment = () => {
     const navigate = useNavigate();
 
@@ -25,6 +41,8 @@ const PatientBookAppointment = () => {
     const [availableDates, setAvailableDates] = useState([]);
     const [selectedDate, setSelectedDate] = useState("");
     const [message, setMessage] = useState("");
+    const [loading, setLoading] = useState(false);
+
 
     const token = localStorage.getItem("token");
 
@@ -77,22 +95,87 @@ const PatientBookAppointment = () => {
     };
 
     const handleBook = async () => {
-        if (!selectedDoctor || !selectedDate)
-            return setMessage("⚠️ Please select doctor and date.");
+        if (!selectedDoctor || !selectedDate) {
+            return toast("Please select doctor and date", "error");
+        }
+        console.log(selectedDoctor);
+        setLoading(true);
+        if (!token) {
+            toast("Please login again", "error");
+            navigate("/login");
+            return;
+        }
+
+        // 1️⃣ load Razorpay script
+        const loaded = await loadRazorpayScript();
+        if (!loaded) {
+            return toast("Failed to load payment gateway", "error");
+        }
 
         try {
-            const res = await axios.post(
-                `http://localhost:7000/api/appointment/book/${selectedDoctor._id}`,
-                { date: selectedDate },
-                { headers: { Authorization: `Bearer ${token}` } }
+            // 2️⃣ ask backend to create Razorpay order
+            const { data } = await axios.post(
+                "http://localhost:7000/api/payment/create-order",
+                {
+                    amount: selectedDoctor.consultationFee || selectedDoctor.fee
+                },
+                {
+                    headers: { Authorization: `Bearer ${token}` },
+                }
             );
 
-            // setMessage("✅ " + res.data.message);
-            toast(res.data.message);
+            const options = {
+                key: data.keyId,          // Razorpay key_id (TEST key for now)
+                amount: data.amount,      // in paise
+                currency: data.currency,  // "INR"
+                order_id: data.orderId,
+
+                name: "Doctor Appointment",
+                description: `Consultation with Dr. ${selectedDoctor.name}`,
+                theme: {
+                    color: "#00e5ff",
+                },
+                handler: async function (response) {
+                    // 3️⃣ payment successful → now book appointment
+                    try {
+                        await axios.post(
+                            `http://localhost:7000/api/appointment/book/${selectedDoctor._id}`,
+                            { date: selectedDate },
+                            { headers: { Authorization: `Bearer ${token}` } }
+                        );
+
+                        toast("Appointment booked successfully", "success");
+                        setTimeout(() => navigate("/patient/dashboard"), 1200);
+                    } catch (err) {
+                        console.error(err);
+                        toast(
+                            err.response?.data?.message ||
+                            "Payment successful but booking failed. Contact support.",
+                            "error"
+                        );
+                    }
+                },
+                modal: {
+                    ondismiss: function () {
+                        toast("Payment cancelled", "error");
+                    },
+                },
+            };
+
+            const rzp = new window.Razorpay(options);
+            rzp.open();
         } catch (err) {
-            setMessage("❌ " + (err.response?.data?.message || "Error booking appointment"));
+            console.error(err);
+            toast(
+                err.response?.data?.message || "Error initiating payment",
+                "error"
+            );
+        }
+        finally {
+            setLoading(false);
         }
     };
+
 
     const handleNavigate = () => {
         navigate("/patient/dashboard");
@@ -236,9 +319,11 @@ const PatientBookAppointment = () => {
                         "&:hover": { bgcolor: "#00bcd4" },
                     }}
                     onClick={handleBook}
+                    disabled={loading}
                 >
-                    Confirm Appointment
+                    {loading ? "Processing..." : "Confirm Appointment"}
                 </Button>
+
 
                 <Button
                     fullWidth

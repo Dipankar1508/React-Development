@@ -125,7 +125,6 @@ Admins have full control over system operations, including viewing feedback, man
 
 <img width="1892" height="860" alt="image" src="https://github.com/user-attachments/assets/4a886c0d-9299-4c5d-99bb-0b69deed9c84" />
 
-
 ### 🏨 Login Page
 
 <img width="1897" height="861" alt="image" src="https://github.com/user-attachments/assets/2cf0cb9c-cf3b-448a-b308-a444513daa4e" />
@@ -154,7 +153,6 @@ Admins have full control over system operations, including viewing feedback, man
 ### Appointment Form
 
 <img width="1900" height="863" alt="image" src="https://github.com/user-attachments/assets/63f4ebf4-bae7-400b-baaa-c1495d5f588e" />
-
 
 ---
 
@@ -294,6 +292,15 @@ npm run dev
 - Feedback form sends data using **Axios**.
 - Feedbacks display below the contact form with pagination controls (Next / Previous).
 - Fully responsive and accessible.
+
+## 💳 Razorpay Payment Gateway Integration
+
+The project integrates Razorpay to handle online payments for doctor consultation fees. The flow is secure, smooth, and user-friendly.
+
+- Patients must complete payment before booking an appointment.
+- Razorpay checkout is opened on the frontend using checkout.js.
+- Secure order creation is handled on the backend.
+- Payment confirmation automatically books the selected appointment.
 
 ---
 

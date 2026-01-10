@@ -140,6 +140,12 @@ Chat/
 }
 ```
 
+## 📸 Screenshots:
+
+- [Login]
+- [Room]
+- [Chat]
+
 ---
 
 ## 🔁 Application Flowcharts
@@ -220,7 +226,7 @@ toast("Joined room successfully", "success");
 ### 1️⃣ Clone Repo
 
 ```bash
-git clone https://github.com/your-username/huddle.git
+git clone https://github.com/Dipankar1508/React-Development/tree/main/Chat
 cd huddle
 ```
 
@@ -277,3 +283,5 @@ Full-Stack Developer
 Built as a real-world learning project focused on backend correctness and system design.
 
 ### 📧 Email
+
+sciencexlldipankarsarkar@gmail.com

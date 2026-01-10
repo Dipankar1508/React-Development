@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { getSocket, connectSocket, disconnectSocket } from "../socket";
+import { toast } from "../utils/Toast";
 
 export default function Chat({ setIsAuth }) {
     const { roomId: routeRoomId } = useParams();
@@ -27,7 +28,7 @@ export default function Chat({ setIsAuth }) {
     const socketRef = useRef(null);
 
     // const password = location.state?.password;
-    console.log("Chat loaded:", { roomId, password, storedRoomId, storedPassword });
+    // console.log("Chat loaded:", { roomId, password, storedRoomId, storedPassword });
 
     useEffect(() => {
         if (!myEmail) {
@@ -39,7 +40,8 @@ export default function Chat({ setIsAuth }) {
     useEffect(() => {
         console.log("Guard check:", { roomId, password });  // ← add this
         if (!roomId || !password) {
-            alert("Room info missing. Please join again.");
+            // alert("Room info missing. Please join again.");
+            toast("Room info missing. Please join again", "info");
             navigate("/rooms");
         }
     }, [roomId, password, navigate]);
@@ -62,7 +64,8 @@ export default function Chat({ setIsAuth }) {
         const handleMessage = (data) =>
             setMessages((prev) => [...prev, data]);
         const handleJoinError = (msg) => {
-            alert(msg);
+            // alert(msg);
+            toast("Could not join room. Please try again", "error");
             navigate("/rooms");
         };
 

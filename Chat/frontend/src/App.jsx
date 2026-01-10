@@ -4,6 +4,9 @@ import { useState, useEffect } from "react";
 import Login from "./pages/Login";
 import Room from "./pages/Room";
 import Chat from "./pages/Chat";
+import Features from "./components/Features";
+import Security from "./components/Security";
+import About from "./components/About";
 
 export default function App() {
   const [isAuth, setIsAuth] = useState(false);
@@ -15,6 +18,10 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/features" element={<Features />} />
+        <Route path="/security" element={<Security />} />
+        <Route path="/about" element={<About />} />
+
         <Route path="/" element={<Login setIsAuth={setIsAuth} />} />
 
         <Route

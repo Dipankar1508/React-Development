@@ -1,4 +1,5 @@
 import { io } from "socket.io-client";
+import { API_BASE_URL } from "../src/utils/Config";  // ← Add this
 
 let socket = null;
 
@@ -6,9 +7,9 @@ export const connectSocket = () => {
     const token = localStorage.getItem("token");
     if (!token) return null;
 
-    socket = io("http://localhost:5000", {
+    socket = io(API_BASE_URL.replace("/api", ""), {
         auth: { token },
-        transports: ["websocket"],  // avoid polling issues
+        transports: ["websocket"],
     });
 
     return socket;

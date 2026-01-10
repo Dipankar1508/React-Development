@@ -1,9 +1,15 @@
 import { useState } from "react";
 import logo from "/Huddle_Logo.png";
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
     const [open, setOpen] = useState(false);
+    const navigate = useNavigate();
 
+    const handleNavigate = (path) => {
+        navigate(path);
+        setOpen(false);
+    };
     return (
         <header className="w-full bg-white border-b border-slate-200">
             <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -15,6 +21,7 @@ export default function Navbar() {
                             src={logo}
                             alt="Huddle Logo"
                             className="w-14 h-14 object-contain mix-blend-multiply"
+                            onClick={() => handleNavigate("/")}
                         />
                     </div>
 
@@ -33,10 +40,12 @@ export default function Navbar() {
                     {["Features", "Security", "About"].map((item) => (
                         <button
                             key={item}
-                            className=" text-slate-600 hover:text-indigo-600 transition-colors"
+                            onClick={() => handleNavigate(`/${item.toLowerCase()}`)}
+                            className="text-slate-600 hover:text-indigo-600 transition-colors"
                         >
                             {item}
                         </button>
+
                     ))}
                 </nav>
 
@@ -72,11 +81,12 @@ export default function Navbar() {
                     {["Features", "Security", "About"].map((item) => (
                         <button
                             key={item}
-                            onClick={() => setOpen(false)}
+                            onClick={() => handleNavigate(`/${item.toLowerCase()}`)}
                             className="block w-full text-left text-slate-700 hover:text-indigo-600 transition-colors"
                         >
                             {item}
                         </button>
+
                     ))}
                 </nav>
             </div>

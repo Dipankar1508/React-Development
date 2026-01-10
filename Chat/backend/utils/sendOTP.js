@@ -7,43 +7,29 @@ const transporter = nodemailer.createTransport({
         pass: process.env.GMAIL_APP_PASSWORD, // 16-digit app password
     },
 });
-
-// module.exports = async (email, otp) => {
-//     await transporter.sendMail({
-//         from: "Huddle <no-reply@huddle.com>",
-//         to: email,
-//         subject: "Your Huddle Login OTP",
-//         html: `
-//             <p>Hello,</p>
-
-//             <p>Your One-Time Password (OTP) for logging into <b>Huddle</b> is:</p>
-
-//             <h2 style="letter-spacing:2px;">${otp}</h2>
-
-//             <p>This OTP is valid for <b>5 minutes</b>.</p>
-
-//             <p>Please do not share this OTP with anyone.</p>
-
-//             <p>If you did not request this login, you can safely ignore this email.</p>
-
-//             <br/>
-//             <p>Thanks,<br/>Team Huddle</p>
-//         `,
-//     });
-// };
-
 module.exports = async (email, otp) => {
     try {
         await transporter.sendMail({
             from: `"Huddle" <${process.env.GMAIL_USER}>`,
             to: email,
             subject: "Your Huddle Login OTP",
-            html: `<h2>${otp}</h2>`
+            html: `
+            <div style="font-family: Arial, sans-serif; max-width: 500px; margin: 0 auto; padding: 20px;">
+                <h2 style="color: #4f46e5;">Your Huddle Login OTP</h2>
+                <div style="background: #f8fafc; padding: 30px; text-align: center; border-radius: 12px;">
+                    <h1 style="font-size: 48px; font-weight: bold; color: #4f46e5; margin: 0; letter-spacing: 8px;">${otp}</h1>
+                    <p style="color: #64748b; margin-top: 20px;">Valid for 5 minutes</p>
+                </div>
+                <p style="color: #64748b; font-size: 14px; margin-top: 30px;">
+                    This OTP was requested for Huddle login. If you didn't request it, ignore this email.
+                </p>
+            </div>
+            `
         });
 
-        console.log("✅ OTP sent to", email);
+        console.log("OTP sent to", email);
     } catch (err) {
-        console.error("❌ OTP FAILED:", err.message);
+        console.error("OTP FAILED:", err.message);
         throw err;
     }
 };

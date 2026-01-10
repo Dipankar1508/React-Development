@@ -15,6 +15,7 @@ export const toast = (msg, type = "info") => {
         duration: 3000,
         gravity: "top",
         position: "right",
+        close: true,
         style: { background: colors[type] },
     }).showToast();
 };

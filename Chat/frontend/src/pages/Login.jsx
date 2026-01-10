@@ -6,6 +6,7 @@ import { connectSocket } from "../socket";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { toast } from "../utils/Toast"
+import { API_BASE_URL } from "../utils/Config"
 
 export default function Login({ setIsAuth }) {
     const [step, setStep] = useState("email");
@@ -21,7 +22,8 @@ export default function Login({ setIsAuth }) {
 
         try {
             setLoading(true);
-            await axios.post("http://localhost:5000/api/auth/send-otp", { email });
+
+            await axios.post(`${API_BASE_URL}/auth/send-otp`, { email });
             setStep("otp");
         } catch {
             return toast("Failed to Send OTP", "error");
@@ -32,12 +34,12 @@ export default function Login({ setIsAuth }) {
 
     // 🔐 VERIFY OTP
     const verifyOTP = async () => {
-        if (!otp) return alert("Enter OTP");
+        if (!otp) return toast("Enter OTP", "info");
 
         try {
             setLoading(true);
             const res = await axios.post(
-                "http://localhost:5000/api/auth/verify-otp",
+                `${API_BASE_URL}/auth/verify-otp`,
                 { email, otp }
             );
 
@@ -55,11 +57,12 @@ export default function Login({ setIsAuth }) {
     };
 
     return (
-        <div className="min-h-screen flex flex-col bg-gradient-to-br from-slate-100 to-slate-200">
+        <div className="flex flex-col min-h-screen bg-gradient-to-br from-slate-100 to-slate-200">
+
             <Navbar />
 
             {/* MAIN */}
-            <main className="flex-1 flex items-center justify-center px-4 py-10">
+            <main className="flex-1 flex items-center justify-center px-4 py-20">
                 <div
                     className="
                         w-full max-w-4xl min-h-[460px]
@@ -69,7 +72,7 @@ export default function Login({ setIsAuth }) {
                     "
                 >
                     {/* LEFT – FORM (MOBILE FIRST) */}
-                    <div className="p-7 sm:p-12 flex flex-col justify-center relative z-10">
+                    <div className="p-7 sm:p-12 flex flex-col justify-center relative z-10 order-2 md:order-1">
 
                         <h2 className="text-3xl font-bold text-slate-800 mb-2">
                             Hello Chatty 💬
@@ -95,7 +98,9 @@ export default function Login({ setIsAuth }) {
                                     "
                                     placeholder="Email address"
                                     value={email}
+                                    maxLength={32}
                                     onChange={(e) => setEmail(e.target.value)}
+                                    required
                                 />
 
                                 <button
@@ -133,6 +138,7 @@ export default function Login({ setIsAuth }) {
                                     placeholder="Enter OTP"
                                     value={otp}
                                     onChange={(e) => setOtp(e.target.value)}
+                                    required
                                 />
 
                                 <button
@@ -159,7 +165,7 @@ export default function Login({ setIsAuth }) {
                     {/* RIGHT – GRADIENT PANEL */}
                     <div
                         className="
-                            hidden md:flex items-center justify-center
+                             md:flex items-center justify-center flex order-1 md:order-2
                             bg-gradient-to-br from-purple-600 to-indigo-700
                             text-white p-12 relative
                         "
@@ -168,7 +174,7 @@ export default function Login({ setIsAuth }) {
                         <div
                             className="
                                 absolute inset-y-0 left-0 w-14
-                                bg-white
+                                bg-white hidden md:block
                                 rounded-tr-[120px] rounded-br-[120px]
                             "
                         />
@@ -177,10 +183,32 @@ export default function Login({ setIsAuth }) {
                             <h3 className="text-3xl font-bold">
                                 Welcome Back!
                             </h3>
-                            <p className="text-indigo-100 leading-relaxed">
-                                Join secure, real-time conversations with your team
-                                and friends — instantly and effortlessly.
+                            <p className="
+                                text-indigo-100 
+                                leading-relaxed 
+                                text-sm sm:text-base
+                                max-w-md 
+                                mx-auto
+                            ">
+                                Huddle lets you create <span className="font-semibold text-white">
+                                    private, password-protected chat rooms</span> with OTP-based authentication
+                                and real-time messaging.
                             </p>
+
+                            <p className="
+                                text-indigo-100 
+                                leading-relaxed 
+                                text-sm sm:text-base
+                                max-w-md 
+                                mx-auto 
+                                mt-4
+                            ">
+                                Join secure, real-time conversations with your team and friends —
+                                <span className="font-semibold text-white">
+                                    instantly and effortlessly.
+                                </span>
+                            </p>
+
                         </div>
                     </div>
                 </div>

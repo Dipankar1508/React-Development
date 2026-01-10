@@ -2,14 +2,54 @@
 <html lang="en">
 
 <head>
+  <!-- BASIC -->
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/Huddle_Logo.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Huddle</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- TITLE -->
+  <title>Huddle | Secure Real-Time Chat Rooms</title>
+
+  <!-- FAVICON -->
+  <link rel="icon" type="image/png" href="/Huddle_Logo.png" />
+
+  <!-- SEO -->
+  <meta name="description"
+    content="Huddle is a secure real-time chat platform with password-protected rooms, OTP-based login, and end-to-end messaging using Socket.IO." />
+  <meta name="keywords" content="Huddle, real-time chat, socket.io, secure chat, private rooms, OTP login" />
+  <meta name="author" content="Dipankar Sarkar" />
+
+  <!-- OPEN GRAPH (SOCIAL PREVIEW) -->
+  <meta property="og:title" content="Huddle | Secure Real-Time Chat Rooms" />
+  <meta property="og:description" content="Create or join secure chat rooms with OTP login and real-time messaging." />
+  <meta property="og:image" content="/Huddle_Logo.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Huddle" />
+
+  <!-- TWITTER CARD -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Huddle | Secure Real-Time Chat Rooms" />
+  <meta name="twitter:description" content="Private real-time chat rooms with OTP authentication." />
+  <meta name="twitter:image" content="/Huddle_Logo.png" />
+
+  <!-- PERFORMANCE -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- PWA READY (OPTIONAL, FUTURE SAFE) -->
+  <meta name="theme-color" content="#4f46e5" />
 </head>
 
 <body>
+  <noscript>
+    <strong>
+      Huddle requires JavaScript to run properly. Please enable JavaScript.
+    </strong>
+  </noscript>
+
   <div id="root"></div>
+
+  <!-- VITE ENTRY -->
   <script type="module" src="/src/main.jsx"></script>
 </body>
 

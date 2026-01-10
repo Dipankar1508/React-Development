@@ -40,11 +40,11 @@ export default function Room({ setIsAuth }) {
     };
 
     return (
-        <div className="min-h-screen flex flex-col bg-slate-100">
+        <div className="flex flex-col min-h-screen bg-slate-100">
             <Navbar />
 
             {/* MAIN */}
-            <main className="flex-1 flex items-center justify-center px-4">
+            <main className="flex-1 flex items-center justify-center px-4 py-20">
                 <div className="w-full max-w-md bg-white rounded-2xl shadow-lg p-8 space-y-8">
 
                     {/* USER INFO */}
@@ -93,6 +93,7 @@ export default function Room({ setIsAuth }) {
                             value={roomId}
                             maxLength={20}
                             onChange={(e) => setRoomId(e.target.value)}
+                            required
                         />
 
                         {/* ROOM PASSWORD */}
@@ -106,7 +107,9 @@ export default function Room({ setIsAuth }) {
                             "
                             placeholder="Room password"
                             value={password}
+                            maxLength={20}
                             onChange={(e) => setPassword(e.target.value)}
+                            required
                         />
 
                         <button

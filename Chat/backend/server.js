@@ -14,8 +14,12 @@ app.use(express.json());
 
 app.use("/api/auth", authRoutes);
 
-
-mongoose.connect(process.env.MONGO_URI);
+const production = false;
+if (production) {
+    mongoose.connect(process.env.DB_URI);
+} else {
+    mongoose.connect(process.env.MONGO_URI);
+}
 
 const server = http.createServer(app);
 const io = new Server(server, { cors: { origin: "*" } });

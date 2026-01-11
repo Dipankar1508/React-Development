@@ -1,5 +1,4 @@
-const isProduction = import.meta.env.PROD === true || import.meta.env.MODE === 'production';
-
+const isProduction = false
 export const API_BASE_URL = isProduction
-    ? "https://your-backend.onrender.com/api"
+    ? import.meta.env.VITE_API_BASE_URL
     : "http://localhost:5000/api";            

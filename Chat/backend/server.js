@@ -14,7 +14,7 @@ app.use(express.json());
 
 app.use("/api/auth", authRoutes);
 
-const production = false;
+const production = true;
 if (production) {
     mongoose.connect(process.env.DB_URI);
 } else {

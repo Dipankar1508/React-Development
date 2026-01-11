@@ -1,4 +1,4 @@
-const isProduction = false
+const isProduction = true
 export const API_BASE_URL = isProduction
     ? import.meta.env.VITE_API_BASE_URL
     : "http://localhost:5000/api";            

@@ -98,7 +98,7 @@ export default function Login({ setIsAuth }) {
                                     "
                                     placeholder="Email address"
                                     value={email}
-                                    maxLength={32}
+                                    maxLength={55}
                                     onChange={(e) => setEmail(e.target.value)}
                                     required
                                 />

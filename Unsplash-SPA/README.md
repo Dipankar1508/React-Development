@@ -52,7 +52,9 @@
 <img width="1894" height="861" alt="image" src="https://github.com/user-attachments/assets/2f7198c2-9abd-42a8-9cb5-d46061a66aef" />
 
 <img width="1903" height="863" alt="image" src="https://github.com/user-attachments/assets/a848c94b-f327-4f84-8932-5358ffc9531c" />
+
 ### Mobile view
+
 <img width="663" height="812" alt="image" src="https://github.com/user-attachments/assets/658f90c0-2241-4b35-b72f-576a3903eb6f" />
 
 ### Sidebar

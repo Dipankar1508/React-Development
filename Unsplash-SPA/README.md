@@ -3,14 +3,14 @@
 ### Modern Unsplash-Inspired Photo Sharing Platform
 
 <p align="center">
-  <b>A sleek, responsive photo gallery built with the MERN stack.</b><br>
-  Designed with a glassmorphic dark theme and modern UI principles.<br><br>
-  ViewPort allows users to explore high-quality images across multiple categories<br>
-  through a fast, smooth, and visually immersive interface.<br>
-  It features a dynamic sidebar navigation, responsive image grid,<br>
-  and a secure admin panel for managing gallery content.<br><br>
-  Built as a full-stack project to demonstrate modern React architecture,<br>
-  RESTful API design, authentication workflows, and responsive UI development.
+<b>A sleek, responsive photo gallery built with the MERN stack.</b><br>
+Designed with a glassmorphic dark theme and modern UI principles.<br><br>
+ViewPort allows users to explore high-quality images across multiple categories<br>
+through a fast, smooth, and visually immersive interface.<br>
+It features a dynamic sidebar navigation, responsive image grid,<br>
+and a secure admin panel for managing gallery content.<br><br>
+Built as a full-stack project to demonstrate modern React architecture,<br>
+RESTful API design, authentication workflows, and responsive UI development.
 
 </p>
 
@@ -104,8 +104,7 @@ ViewPort/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/viewport.git
-cd viewport
+https://github.com/Dipankar1508/React-Development/tree/main/Unsplash-SPA
 ```
 
 ---
@@ -165,7 +164,7 @@ Admin dashboard allows:
 | Method | Endpoint                     | Description            |
 | ------ | ---------------------------- | ---------------------- |
 | GET    | `/api/gallery/get/:category` | Get images by category |
-| POST   | `/api/admin/upload`          | Upload image           |
+| POST   | `/api/admin/gallery`         | Upload image           |
 | PUT    | `/api/admin/update/:id`      | Update image           |
 | DELETE | `/api/admin/delete/:id`      | Delete image           |
 
@@ -191,3 +190,4 @@ GitHub: https://github.com/Dipankar1508
 ## ⭐ Support
 
 If you like this project, consider giving it a **star** on GitHub!
+# Thank You 

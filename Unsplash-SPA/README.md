@@ -2,7 +2,6 @@
 
 ### Modern Unsplash-Inspired Photo Sharing Platform
 
-<p align="center">
 <b>A sleek, responsive photo gallery built with the MERN stack.</b><br>
 Designed with a glassmorphic dark theme and modern UI principles.<br><br>
 ViewPort allows users to explore high-quality images across multiple categories<br>
@@ -11,8 +10,6 @@ It features a dynamic sidebar navigation, responsive image grid,<br>
 and a secure admin panel for managing gallery content.<br><br>
 Built as a full-stack project to demonstrate modern React architecture,<br>
 RESTful API design, authentication workflows, and responsive UI development.
-
-</p>
 
 ---
 
